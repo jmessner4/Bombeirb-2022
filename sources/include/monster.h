@@ -1,0 +1,41 @@
+/*******************************************************************************
+ * This file is part of Bombeirb.
+ * Copyright (C) 2018 by Laurent Réveillère
+ ******************************************************************************/
+#ifndef MONSTER_H_
+#define MONSTER_H_
+
+#include <map.h>
+#include <constant.h>
+#include <player.h>
+
+
+struct monster;
+
+// Creates a new monster and frees it when done
+struct monster* monster_init();
+void   monster_free(struct monster* monster);
+
+// Sets the position of the monster
+void monster_set_position(struct monster *monster, int x, int y);
+
+// Returns the current position of the monster
+int monster_get_x(struct monster* monster);
+int monster_get_y(struct monster* monster);
+
+// Sets the speed parameter 
+int monster_set_speed(struct monster* monster, int t);
+
+// Returns the speed parameter
+int monster_get_speed(struct monster* monster);
+
+// Set the direction of the next move of the monster
+void monster_set_current_way(struct monster * monster, enum direction direction);
+
+// Move the monster according to the current direction
+int monster_move(struct monster* monster, struct map* map, struct player * player);
+
+// Display the monster on the screen
+void monster_display(struct monster* monster);
+
+#endif /* MONSTER_H_ */
